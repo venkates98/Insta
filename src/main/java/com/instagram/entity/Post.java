@@ -1,5 +1,7 @@
 package com.instagram.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,10 +27,15 @@ public class Post {
 
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
+	@JsonBackReference
 	private User user;
 
+	public Post() {
+
+	}
+
 	public Post(Long id, String imagePath, String description, User user) {
-	
+
 		this.id = id;
 		this.imagePath = imagePath;
 		this.description = description;

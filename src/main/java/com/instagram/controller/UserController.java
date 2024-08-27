@@ -16,21 +16,21 @@ import com.instagram.service.UserService;
 @RequestMapping("/users")
 public class UserController {
 
-	 @Autowired
-	    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-	    @PostMapping("/signup")
-	    public User createUser(@RequestBody User user) {
-	        return userService.saveUser(user);
-	    }
+	@PostMapping("/signup")
+	public String createUser(@RequestBody User user) {
+		return userService.saveUser(user);
+	}
 
-	    @GetMapping("/{id}")
-	    public User getUserById(@PathVariable Long id) throws UserNotFoundException {
-	        return userService.getUserById(id);
-	    }
+	@GetMapping("/{id}")
+	public User getUserById(@PathVariable Long id) throws UserNotFoundException {
+		return userService.getUserById(id);
+	}
 
-	    @GetMapping("/username/{username}")
-	    public User getUserByUsername(@PathVariable String username) {
-	        return userService.getUserByUsername(username);
-	    }
+	@GetMapping("/username/{username}")
+	public User getUserByUsername(@PathVariable String username) throws UserNotFoundException {
+		return userService.getUserByUsername(username);
+	}
 }

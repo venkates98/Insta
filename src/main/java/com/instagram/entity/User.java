@@ -2,23 +2,33 @@ package com.instagram.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(nullable = false, unique = true)
 	private String username;
+
+	@Column(nullable = false)
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<Post> posts;
 
+	public User() {
+	}
+
 	public User(Long id, String username, String password, List<Post> posts) {
-	
+
 		this.id = id;
 		this.username = username;
 		this.password = password;
