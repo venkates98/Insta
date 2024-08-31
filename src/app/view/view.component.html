@@ -1,0 +1,17 @@
+
+
+<div *ngFor="let post of posts" class="post">
+
+
+    <!-- <img [src]="post.imagePath" alt="Instagram Post Image" class="post-image" /> -->
+    <div class="post-details">
+      <p><strong>ID:</strong> {{ post.id }}</p>
+     <p>{{post.imagePath}}</p>
+     <p>{{post.userId}}</p>
+      <p><strong>Description:</strong> {{ post.description }}</p>
+    </div>
+  </div>
+
+
+<h1>Hello</h1>
+  <button (click)="gotologin()"></button>
